@@ -11,6 +11,7 @@ module.exports = {
     medicos,
     pacientes,
     obra_sociales,
-    clinicas
-    turno, historia_clinica
+    clinicas,
+    turno, 
+    historia_clinica
 }
