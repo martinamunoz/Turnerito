@@ -1,9 +1,8 @@
 var Datastore = require('nedb')
 
-mascotas = new Datastore({ filename: './database/datastores/mascotas.db', autoload: true })
-vacunas = new Datastore({ filename: './database/datastores/vacunas.db', autoload: true })
+turno = new Datastore({ filename: './database/datastores/turno.db', autoload: true })
+historia_clinica = new Datastore({ filename: './database/datastores/historia_clinica.db', autoload: true })
 
 module.exports = {
-    mascotas,
-    vacunas
+    turno, historia_clinica
 }
