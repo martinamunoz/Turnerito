@@ -40,7 +40,7 @@ const apiDocs = require('./docs/index.js')
 
 // Montamos la documentacion en la ruta /docs
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
-app.options('/',(req,res,next) =>{    
+app.options('/',(req, res, next) =>{    
     res.header('allow', 'GET')
     .status(204)
     .send()
