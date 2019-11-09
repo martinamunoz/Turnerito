@@ -6,7 +6,7 @@ const validator = require('validator')
 
 // Importamos la base de datos y los modelos
 const db = require('../database')
-const Paciente = require('../database/models/pacientes.model') //Se usan en los new, son las clases.
+const Paciente = require('../database/models/paciente.model') //Se usan en los new, son las clases.
 const HistoriaClinica = require('../database/models/historia_clinica.model')
 
 
@@ -54,7 +54,7 @@ router.get('/:idPaciente/historia-clinica', function (req, res, next) {
         next(error)
     }
 
-    db.historia_clinica
+    db.historias_clinicas
         .findOne({ _id: idPaciente }, function (error, historiaClinica) {
             if (error) {
                 next(error)
@@ -113,7 +113,7 @@ router.post('/:idPaciente/historia-clinica', function (req, res, next) {
     // Opcionalmente, aqui puede validar los datos del body
     // Como por ejemplo, que la fecha de nacimiento tenga el formato correcto
     let historiaClinicaNueva = new HistoriaClinica(idPaciente, data.medicoID, data.fecha_hora, data.descripcion);
-    db.historia_clinica
+    db.historias_clinicas
         .insert(historiaClinicaNueva, function (error, historiaClinicaInsertada) {
             if (error)
                 next(error)

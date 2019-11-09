@@ -1,9 +1,9 @@
-const uuid = require('uuid/v1')
+const uuid = require('uuid/v4')
 
-class Obra_social{
+class ObraSocial{
     constructor(nombre){
         this._id = uuid()
         this.nombre = nombre
     }
 }
-module.exports = Obra_social
+module.exports = ObraSocial
