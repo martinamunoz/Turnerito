@@ -9,6 +9,8 @@ servers:
 - url: localhost
 paths:
   /Paciente:
+    schema:
+      $ref: './pacientes/index.yaml'
     get:
       tags:
       - Paciente
@@ -646,3 +648,4 @@ components:
         dir:
           type: string
           example: España 140 N
+
