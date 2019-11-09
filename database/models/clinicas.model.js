@@ -1,6 +1,6 @@
 const uuid = require ('uuid/v4')
 
-class Clinicas{
+class Clinica{
     constructor (nombre, cuit, direccion, telefono){
         this._id = uuid()
         this.nombre = nombre
@@ -9,4 +9,4 @@ class Clinicas{
         this.telefono = telefono
     }
 }
-module.exports = Clinicas
+module.exports = Clinica
