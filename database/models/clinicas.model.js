@@ -1,11 +1,12 @@
-const uuid = require ('uuid/v1')
+const uuid = require ('uuid/v4')
 
-class Clinicas{
-    constructor (cuit, direccion, telefono){
+class Clinica{
+    constructor (nombre, cuit, direccion, telefono){
         this._id = uuid()
+        this.nombre = nombre
         this.cuit = cuit
         this.direccion = direccion
         this.telefono = telefono
     }
 }
-module.exports = Clinicas
+module.exports = Clinica
