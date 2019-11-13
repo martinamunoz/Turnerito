@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
 // Importamos los routers
-const historiasClinicasRouter = require('./routes/historias_clinicas.js')
+//const historiasClinicasRouter = require('./routes/historias_clinicas.js')
 const pacientesRouter = require('./routes/pacientes.js')
 const clinicasRouter = require('./routes/clinicas.js')
 const medicosRouter = require('./routes/medicos.js')
