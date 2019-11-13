@@ -12,6 +12,12 @@ const ObraSocial = require('../database/models/obra_social.model')
 // Instanciamos un router
 const router = Router()
 
+// Ruta para obtener los metodos
+router.options('/', function (req,res,next) {
+    res.status(200)
+    res.header('allow', 'GET, POST, DELETE, PATCH ,OPTIONS')
+    res.send()
+})
 // Ruta para obtener todas las obras sociales
 router.get('/', function (req, res, next) {
     let query = {}
@@ -38,7 +44,6 @@ router.get('/:idOS', function (req, res, next) {
             res.send(OS)
         })
 })
-
 
 router.post('/', function (req, res, next) {
     const data = req.body;
@@ -113,8 +118,6 @@ router.patch('/:idOS', function (req, res, next) {
                 })
         })
 })
-
-
 
 // Exportamos nuestro router
 module.exports = router;

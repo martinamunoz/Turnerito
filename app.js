@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
 // Importamos los routers
-//const historiasClinicasRouter = require('./routes/historias_clinicas.js')
+const historiasClinicasRouter = require('./routes/historias_clinicas.js')
 const pacientesRouter = require('./routes/pacientes.js')
 const clinicasRouter = require('./routes/clinicas.js')
 const medicosRouter = require('./routes/medicos.js')
@@ -23,7 +23,7 @@ const apiDocs = require('./docs/index.js')
 // Utilizamos los middleware
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use('/headers', require('./routes/headers'));
+//app.use('/headers', require('./routes/headers'));
 app.get('/', (req, res, next) => {
 
     res.send({
@@ -70,7 +70,7 @@ app.options('/', (req, res, next) => {
 })
 // Le indicamos a nuestra app que use los routers
 app.use('/clinicas', clinicasRouter)
-app.use('/historias-clinicas', historiasClinicasRouter)
+app.use('/historias_clinicas', historiasClinicasRouter)
 app.use('/medicos', medicosRouter)
 app.use('/obras-sociales', obrasSocialesRouter)
 app.use('/pacientes', pacientesRouter)

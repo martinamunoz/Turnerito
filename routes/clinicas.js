@@ -22,8 +22,12 @@ router.get('/', function (req, res, next) {
             res.send(clinicas)
         })
 })
-
-
+// Ruta para obtener los metodos
+router.options('/', function (req,res,next) {
+    res.status(200)
+    res.header('allow', 'GET, POST, DELETE, PATCH ,OPTIONS')
+    res.send()
+})
 // Ruta para obtener los datos de una mascota en particular
 router.get('/:idClinica', function (req, res, next) {
     const idClinica = req.params.idClinica;

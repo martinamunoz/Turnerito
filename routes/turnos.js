@@ -13,6 +13,12 @@ const Turno = require('../database/models/turno.model') //Se usan en los new, so
 // Instanciamos un router
 const router = Router()
 
+// Ruta para obtener los metodos
+router.options('/', function (req,res,next) {
+    res.status(200)
+    res.header('allow', 'GET, POST, DELETE, PATCH ,OPTIONS')
+    res.send()
+})
 // Ruta para obtener todas las pacientes
 router.get('/', function (req, res, next) {
     let query = {}

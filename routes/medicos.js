@@ -12,6 +12,12 @@ const Medico = require('../database/models/medico.model')
 // Instanciamos un router
 const router = Router()
 
+// Ruta para obtener los metodos
+router.options('/', function (req,res,next) {
+    res.status(200)
+    res.header('allow', 'GET, POST, DELETE, PATCH ,OPTIONS')
+    res.send()
+})
 // Ruta para obtener todas los medicos
 router.get('/', function (req, res, next) {
     let query = {}
@@ -43,7 +49,6 @@ router.get('/:idMedico', function (req, res, next) {
             res.send(medico)
         })
 })
-
 
 router.post('/', function (req, res, next) {
     const data = req.body;
@@ -85,7 +90,6 @@ router.delete('/:idMedico', function (req, res, next) {
                 })
     })
 })
-
 
 // Ruta para modificar un medico
 router.patch('/:idMedico', function (req, res, next) {
