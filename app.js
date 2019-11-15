@@ -18,7 +18,7 @@ const app = express()
 
 // Importamos la documentacion de la API
 const swaggerUi = require('swagger-ui-express')
-const apiDocs = require('./docs/index.js')
+const apiDocs = require('./docs/openapi/index.js')
 
 // Utilizamos los middleware
 app.use(morgan('dev'))

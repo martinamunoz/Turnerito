@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "531474c5-639e-49e1-a706-7f0695b32981",
+		"name": "API Turnos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "POST Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30552cc3-21f2-4a04-8f88-259fd8ccd02d",
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\",() => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Has JSON Body\", () => {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json; ",
+									"});",
+									"",
+									"pm.test('Schema is valid', () => {",
+									"  const responseBody = pm.response.json();",
+									"  const pacienteSchema = JSON.parse(pm.environment.get(\"pacienteSchema\"));",
+									"  const isValidSchema = tv4.validate(responseBody, pacienteSchema, false, true);",
+									"    if (!isValidSchema)",
+									"          console.log(tv4.error);",
+									"  pm.expect(isValidSchema).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Aylen\",\r\n    \"apellido\": \"Ferrandiz\",\r\n    \"dni\": \"35852563\",\r\n    \"tel\": \"4285215\",\r\n    \"mail\": \"renzo@gmail.com\",\r\n    \"direccion\": 1,\r\n    \"osID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/pacientes",
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e237fb7-57f5-49bc-8679-dc8eb16ba861",
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\",() => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Has JSON Body\", () => {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json; ",
+									"});",
+									"",
+									"pm.test('Schema is valid', () => {",
+									"  const responseBody = pm.response.json();",
+									"  const pacientesSchema = JSON.parse(pm.environment.get(\"pacientesSchema\"));",
+									"  const isValidSchema = tv4.validate(responseBody, pacientesSchema, false, true);",
+									"    if (!isValidSchema)",
+									"          console.log(tv4.error);",
+									"  pm.expect(isValidSchema).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/pacientes",
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Paciente Single",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7102ce36-66f4-449a-b01c-d3ba0e4f81dc",
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\",() => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Has JSON Body\", () => {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json; ",
+									"});",
+									"",
+									"pm.test('Schema is valid', () => {",
+									"  const responseBody = pm.response.json();",
+									"  const pacienteSchema = JSON.parse(pm.environment.get(\"pacienteSchema\"));",
+									" isValidSchema = tv4.validate(responseBody, pacienteSchema, false, true);",
+									"    if (!isValidSchema)",
+									"          console.log(tv4.error);",
+									"  pm.expect(isValidSchema).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9a044f28-232d-421b-bed7-59d97a450fcb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/pacientes/{{idPaciente}}",
+							"path": [
+								"pacientes",
+								"{{idPaciente}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa18f4ce-4855-44a4-904e-e442ccd92668",
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\",() => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Has JSON Body\", () => {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json; ",
+									"});",
+									"",
+									"pm.test('Schema is valid', () => {",
+									"  const responseBody = pm.response.json();",
+									"  const pacienteSchema = JSON.parse(pm.environment.get(\"pacienteSchema\"));",
+									"  const isValidSchema = tv4.validate(responseBody, pacienteSchema, false, true);",
+									"    if (!isValidSchema)",
+									"          console.log(tv4.error);",
+									"  pm.expect(isValidSchema).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Aylen\",\r\n    \"apellido\": \"Ferrandiz\",\r\n    \"dni\": \"35852563\",\r\n    \"tel\": \"4285215\",\r\n    \"mail\": \"renzo@gmail.com\",\r\n    \"direccion\": 1,\r\n    \"osID\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/pacientes/{{idPaciente}}",
+							"path": [
+								"pacientes",
+								"{{idPaciente}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3965c59e-93b2-46e3-83dc-40e6a052db6b",
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\",() => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Has JSON Body\", () => {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json; ",
+									"});",
+									"",
+									"pm.test('Schema is valid', () => {",
+									"  const responseBody = pm.response.json();",
+									"  const pacienteSchema = JSON.parse(pm.environment.get(\"pacienteSchema\"));",
+									"  const isValidSchema = tv4.validate(responseBody, pacienteSchema, false, true);",
+									"    if (!isValidSchema)",
+									"          console.log(tv4.error);",
+									"  pm.expect(isValidSchema).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/pacientes/{{idPaciente}}",
+							"path": [
+								"pacientes",
+								"{{idPaciente}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ead3c7f9-6d49-4930-b42e-d3ddbed08f96",
+						"type": "text/javascript",
+						"exec": [
+							"const pacienteSchema = {",
+							"  \"definitions\": {},",
+							"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+							"  \"$id\": \"http://example.com/root.json\",",
+							"  \"type\": \"object\",",
+							"  \"title\": \"The Root Schema\",",
+							"  \"required\": [",
+							"    \"_id\",",
+							"    \"nombre\",",
+							"    \"apellido\",",
+							"    \"dni\",",
+							"    \"tel\",",
+							"    \"mail\",",
+							"    \"direccion\",",
+							"    \"osID\"",
+							"  ],",
+							"  \"properties\": {",
+							"    \"_id\": {",
+							"      \"$id\": \"#/properties/_id\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The _id Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"e7f2fa71-f517-44c0-8b99-04a93268e80c\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"nombre\": {",
+							"      \"$id\": \"#/properties/nombre\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The Nombre Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"Renzo\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"apellido\": {",
+							"      \"$id\": \"#/properties/apellido\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The Apellido Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"Ferrandiz\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"dni\": {",
+							"      \"$id\": \"#/properties/dni\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The Dni Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"35852563\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"tel\": {",
+							"      \"$id\": \"#/properties/tel\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The Tel Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"4285215\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"mail\": {",
+							"      \"$id\": \"#/properties/mail\",",
+							"      \"type\": \"string\",",
+							"      \"title\": \"The Mail Schema\",",
+							"      \"default\": \"\",",
+							"      \"examples\": [",
+							"        \"renzo@gmail.com\"",
+							"      ],",
+							"      \"pattern\": \"^(.*)$\"",
+							"    },",
+							"    \"direccion\": {",
+							"      \"$id\": \"#/properties/direccion\",",
+							"      \"type\": \"integer\",",
+							"      \"title\": \"The Direccion Schema\",",
+							"      \"default\": 0,",
+							"      \"examples\": [",
+							"        1",
+							"      ]",
+							"    },",
+							"    \"osID\": {",
+							"      \"$id\": \"#/properties/osID\",",
+							"      \"type\": \"integer\",",
+							"      \"title\": \"The Osid Schema\",",
+							"      \"default\": 0,",
+							"      \"examples\": [",
+							"        1",
+							"      ]",
+							"    }",
+							"  }",
+							"};",
+							"",
+							"pm.environment.set('pacienteSchema', JSON.stringify(pacienteSchema));",
+							"",
+							"const pacientesSchema = {",
+							"  \"definitions\": {},",
+							"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+							"  \"$id\": \"http://example.com/root.json\",",
+							"  \"type\": \"array\",",
+							"  \"title\": \"The Root Schema\",",
+							"  \"items\": {",
+							"    \"$id\": \"#/items\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The Items Schema\",",
+							"    \"required\": [",
+							"      \"_id\",",
+							"      \"nombre\",",
+							"      \"apellido\",",
+							"      \"dni\",",
+							"      \"tel\",",
+							"      \"mail\",",
+							"      \"direccion\",",
+							"      \"osID\"",
+							"    ],",
+							"    \"properties\": {",
+							"      \"_id\": {",
+							"        \"$id\": \"#/items/properties/_id\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The _id Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"042bee94-9b56-4ba3-89b9-d95661ca6914\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"nombre\": {",
+							"        \"$id\": \"#/items/properties/nombre\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The Nombre Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"Renzo\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"apellido\": {",
+							"        \"$id\": \"#/items/properties/apellido\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The Apellido Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"Ferrandiz\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"dni\": {",
+							"        \"$id\": \"#/items/properties/dni\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The Dni Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"35852563\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"tel\": {",
+							"        \"$id\": \"#/items/properties/tel\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The Tel Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"4285215\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"mail\": {",
+							"        \"$id\": \"#/items/properties/mail\",",
+							"        \"type\": \"string\",",
+							"        \"title\": \"The Mail Schema\",",
+							"        \"default\": \"\",",
+							"        \"examples\": [",
+							"          \"renzo@gmail.com\"",
+							"        ],",
+							"        \"pattern\": \"^(.*)$\"",
+							"      },",
+							"      \"direccion\": {",
+							"        \"$id\": \"#/items/properties/direccion\",",
+							"        \"type\": \"integer\",",
+							"        \"title\": \"The Direccion Schema\",",
+							"        \"default\": 0,",
+							"        \"examples\": [",
+							"          1",
+							"        ]",
+							"      },",
+							"      \"osID\": {",
+							"        \"$id\": \"#/items/properties/osID\",",
+							"        \"type\": \"integer\",",
+							"        \"title\": \"The Osid Schema\",",
+							"        \"default\": 0,",
+							"        \"examples\": [",
+							"          1",
+							"        ]",
+							"      }",
+							"    }",
+							"  }",
+							"};",
+							"",
+							"pm.environment.set('pacientesSchema', JSON.stringify(pacientesSchema));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a9cdd4d-4c20-4c6a-9701-f313a1242fe2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4e1e16b5-9e75-4f38-a5b1-d46e2f0c8b03",
+				"type": "text/javascript",
+				"exec": [
+					"const baseURL = \"http://localhost:3000/\";",
+					"pm.request.url = baseURL + pm.request.url.path.join('/');"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c52361f1-981f-49aa-8e19-c879ce8d3c99",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

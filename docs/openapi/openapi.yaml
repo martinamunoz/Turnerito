@@ -1,0 +1,651 @@
+openapi: 3.0.0
+info:
+  title: API Turnos
+  description: 'Documentación para API Turnos'
+  contact:
+    email: gonza.fede.sanchez@gmail.com
+  version: 1.0.0
+servers:
+- url: localhost
+paths:
+  /Paciente:
+    schema:
+      $ref: './pacientes/index.yaml'
+    get:
+      tags:
+      - Paciente
+      summary: Obtener un listado de los pacientes
+      operationId: obtenerPacientes
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paciente'
+        500:
+          description: Hubo un error al obtener el listado de mascotas
+          content: {}
+    post:
+      tags:
+      - Paciente
+      summary: Agregar un nuevo paciente
+      operationId: agregarPaciente
+      requestBody:
+        description: Objeto paciente a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paciente'
+        required: true
+      responses:
+        201:
+          description: El paciente fue creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+        400:
+          description: Los datos del Paciente son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear el Paciente
+          content: {}  
+  /Paciente/{id}:    
+    delete:
+      tags: 
+        - Paciente
+      summary: Eliminar un paciente especifico
+      operationId: eliminarPaciente
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string 
+            example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        400:
+          description: Operación Exitosa
+          content: {}
+        500:
+          description: Hubo un error al eliminar el paciente
+          content: {}  
+    patch:
+      tags:
+        - Paciente
+      summary: Modificar datos de un paciente por su id
+      operationId: actualizarPaciente
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paciente'
+        500:
+          description: Hubo un error al modificar el paciente
+          content: {}    
+  /Medico:
+    get:
+      tags:
+      - Medico
+      summary: Obtener un listado de los medicos
+      operationId: obtenerMedicos
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Medico'
+        500:
+          description: Hubo un error al obtener el listado de Medicos
+          content: {}
+    post:
+      tags:
+      - Medico
+      summary: Agregar un nuevo medico
+      operationId: agregarMedico
+      requestBody:
+        description: Objeto medico a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Medico'
+        required: true
+      responses:
+        201:
+          description: El medico fue creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+        400:
+          description: Los datos del medico son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear el medico
+          content: {}
+  /Medico/{id}:    
+    delete:
+      tags: 
+        - Medico
+      summary: Eliminar un medico especifico
+      operationId: eliminarMedico
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string 
+            example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        400:
+          description: Operación Exitosa
+          content: {}
+        500:
+          description: Hubo un error al eliminar el medico
+          content: {}  
+    patch:
+      tags:
+        - Medico
+      summary: Modificar datos de un medico por su id
+      operationId: actualizarMedico
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+        500:
+          description: Hubo un error al modificar el medico
+          content: {}       
+  /Turno:
+    get:
+      tags:
+      - Turnos
+      summary: Obtener un listado de los turnos
+      operationId: obtenerTurnos
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Turnos'
+        500:
+          description: Hubo un error al obtener el listado de los Turnos
+          content: {}
+    post:
+      tags:
+      - Turnos
+      summary: Agregar un nuevo turno
+      operationId: agregarTurno
+      requestBody:
+        description: Objeto turno a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Turnos'
+        required: true
+      responses:
+        201:
+          description: El Turno fue creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Turnos'
+        400:
+          description: Los datos del turno son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear el turno
+          content: {}
+  /Turno/{id}:    
+    delete:
+      tags: 
+        - Turnos
+      summary: Eliminar un Turno especifico
+      operationId: eliminarTurno
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string 
+            example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        400:
+          description: Operación Exitosa
+          content: {}
+        500:
+          description: Hubo un error al eliminar el Turno
+          content: {}  
+    patch:
+      tags:
+        - Turnos
+      summary: Modificar datos de un Turno por su id
+      operationId: actualizarTurno
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Turnos'
+        500:
+          description: Hubo un error al modificar el Turno
+          content: {}
+  /ObraSocial:
+    get:
+      tags:
+      - Obra Social
+      summary: Obtener un listado de las obras sociales
+      operationId: obtenerOS
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OS'
+        500:
+          description: Hubo un error al obtener el listado de las Obras Sociales
+          content: {}
+    post:
+      tags:
+      - Obra Social
+      summary: Agregar una nueva Obra Social
+      operationId: agregarOS
+      requestBody:
+        description: Objeto OS a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OS'
+        required: true
+      responses:
+        201:
+          description: La Obra Social fue creada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OS'
+        400:
+          description: Los datos de la Obra Social son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear la Obra Social
+          content: {}
+  /ObraSocial/{id}:    
+    delete:
+      tags: 
+        - Obra Social
+      summary: Eliminar una Obra Social especifica
+      operationId: eliminarOS
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string 
+            example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        400:
+          description: Operación Exitosa
+          content: {}
+        500:
+          description: Hubo un error al eliminar la Obra Social
+          content: {}  
+    patch:
+      tags:
+        - Obra Social
+      summary: Modificar datos de una Obra Social por su id
+      operationId: actualizarOS
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OS'
+        500:
+          description: Hubo un error al modificar la Obra Social
+          content: {}
+  /HistoriaClinica:
+    get:
+      tags:
+      - Historia Clínica
+      summary: Obtener un listado de las Historias Clínicas
+      operationId: obtenerHC
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HC'
+        500:
+          description: Hubo un error al obtener el listado de las Historias Clínicas
+          content: {}
+    post:
+      tags:
+      - Historia Clínica
+      summary: Agregar una nueva Historia Clínica
+      operationId: agregarHC
+      requestBody:
+        description: Objeto Historia Clínica a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HC'
+        required: true
+      responses:
+        201:
+          description: La Historia Clínica fue creada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HC'
+        400:
+          description: Los datos de la Historia Clínica son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear la Historia Clínica
+          content: {}
+  /HistoriaClinica/{id}:    
+    patch:
+      tags:
+        - Historia Clínica
+      summary: Modificar datos de una Historia Clínica por su id
+      operationId: actualizarHC
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HC'
+        500:
+          description: Hubo un error al modificar la Historia Clínica
+          content: {}
+  /Clinica:
+    get:
+      tags:
+      - Clínica
+      summary: Obtener un listado de las Clínicas
+      operationId: obtenerClinica
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Clinica'
+        500:
+          description: Hubo un error al obtener el listado de las Clínicas
+          content: {}
+    post:
+      tags:
+      - Clínica
+      summary: Agregar una nueva Clínica
+      operationId: agregarClinica
+      requestBody:
+        description: Objeto Clínica a ser creado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clinica'
+        required: true
+      responses:
+        201:
+          description: La Historia Clínica fue creada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clinica'
+        400:
+          description: Los datos de la Clínica son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear la Clínica
+          content: {}
+  /Clinica/{id}:    
+    delete:
+      tags: 
+        - Clínica
+      summary: Eliminar una Clínica especifica
+      operationId: eliminarClinica
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string 
+            example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        400:
+          description: Operación Exitosa
+          content: {}
+        500:
+          description: Hubo un error al eliminar la Clínica
+          content: {}  
+    patch:
+      tags:
+        - Clínica
+      summary: Modificar datos de una Clínica por su id
+      operationId: actualizarClinica
+      parameters: 
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "b11faa60-f287-11e9-8a31-dd8e324cb24b"
+      responses:
+        200:
+          description: Operacion Exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clinica'
+        500:
+          description: Hubo un error al modificar la Clínica
+          content: {}              
+components:
+  schemas:
+    Paciente:
+      required:
+      - nombre
+      - apellido
+      - dni
+      - tel
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        nombre:
+          type: string
+          example: juan
+        apellido:
+          type: string
+          example: sanchez
+        dni:
+          type: int
+          example: 25527987
+        tel:
+          type: int
+          example: 4237598
+        mail:
+          type: string
+          example: example@gmail.com
+        dir:
+          type: string
+          example: Las Heras 243 S
+        osID:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb124
+        f_nac:
+          type: date
+          example: 09/11/1990
+    Medico:
+      required:
+      - nombre
+      - apellido
+      - dni
+      - tel
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        nombre:
+          type: string
+          example: Pepe
+        apellido:
+          type: string
+          example: Lopez
+        dni:
+          type: int
+          example: 25527987
+        tel:
+          type: int
+          example: 4237598
+        especialidad: 
+          type: string
+          example: odontologo
+        consultorio:
+          type: int
+          example: 3
+    Turnos:
+      required:
+      - medicoID
+      - pacienteID
+      - estadoID
+      - clinicaID
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        medicoID:
+          type: string
+          example: b11faa60-f287-4523-8a31-dd8e324cb24b
+        pacienteID:
+          type: string
+          example: b11faa60-f287-4523-e38b-dd8e324cb24b
+        estadoID:
+          type: string
+          example: b11faa60-f287-1869-8a12-dd8e324cb24b
+        clinicaID:
+          type: string
+          example: b11faa60-f287-4523-e38b-dd8e897cb23b
+        fecha_hora:
+          type: DateTime
+          example: 03/11/2019 16:59
+    OS:
+      required:
+      - nombre
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        nombre:
+          type: string
+          example: osde
+    HC:
+      required:
+      - pacienteID
+      - medicoID
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        pacienteID:
+          type: string
+          example: b11fee10-f287-11e9-8a31-dd8e324cb24b
+        medicoID:
+          type: string
+          example: b11fee10-f287-11e9-8a31-dd8e324cb24b
+        fecha_hora:
+          type: DateTime
+          example: 03/11/2019 16:59
+        descripcion:
+          type: string
+          example: paciente con asma
+    Clinica:
+      required:
+      - cuit
+      - nombre
+      - tel
+      - dir
+      type: object
+      properties:
+        _id:
+          type: string
+          example: b11faa60-f287-11e9-8a31-dd8e324cb24b
+        cuit:
+          type: string
+          example: 30-30587989-5
+        nombre:
+          type: string
+          example: Clinica Mercedario
+        tel:
+          type: int
+          example: 4237852 
+        dir:
+          type: string
+          example: España 140 N
+

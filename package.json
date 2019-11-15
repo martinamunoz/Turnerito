@@ -4,8 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon  ./server.js",
-    "db:reiniciar": "rm ./database/datastores/*.db"
+    "start": "node ./server.js",
+    "pretest": "nohup node ./server.js > /dev/null 2>&1 &",
+    "dev": "nodemon ./server.js",
+    "test": "npx newman run test/postman-test.json",
+    "debug": "node --inspect ./server.js",
+    "db:reiniciar": "rm ./database/datastores/*.db",
+    "docs": "npx openapi-generator generate -i ./docs/openapi/openapi.yaml -o ./docs/"
   },
   "keywords": [],
   "author": "",
